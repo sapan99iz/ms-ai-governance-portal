@@ -170,6 +170,44 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Mobile Header Sub-Bar (< sm): Author Attribution & Links */}
+        <div className="sm:hidden px-3.5 py-1 bg-slate-50/95 dark:bg-slate-950/95 border-t border-slate-200/70 dark:border-slate-800/70 flex items-center justify-between text-[11px]">
+          <div className="flex items-center space-x-1.5 text-slate-600 dark:text-slate-400 font-medium">
+            <span>Architected by</span>
+            <a
+              href="https://sapanpatel1230.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
+            >
+              Sapan Patel
+            </a>
+          </div>
+          <div className="flex items-center space-x-2 text-[10.5px]">
+            <a
+              href="https://www.linkedin.com/in/sapan-patel-807321222/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-cyan-400 hover:underline flex items-center space-x-0.5 font-semibold"
+              title="Sapan Patel LinkedIn"
+            >
+              <Linkedin className="w-3 h-3" />
+              <span>LinkedIn</span>
+            </a>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <a
+              href="https://sapanpatel1230.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-cyan-400 hover:underline flex items-center space-x-0.5 font-semibold"
+              title="Sapan Patel Portfolio"
+            >
+              <Globe className="w-3 h-3" />
+              <span>Portfolio</span>
+            </a>
+          </div>
+        </div>
       </header>
 
       {/* Main Hero & Intake Container */}

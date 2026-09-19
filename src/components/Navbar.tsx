@@ -221,10 +221,48 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
+      {/* Mobile Sub-Header Attribution & Social Strip (< sm) */}
+      <div className="sm:hidden px-3.5 py-1 bg-slate-50/95 dark:bg-slate-950/95 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between text-[11px]">
+        <div className="flex items-center space-x-1.5 text-slate-600 dark:text-slate-400 font-medium">
+          <span>Architected by</span>
+          <a
+            href="https://sapanpatel1230.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
+          >
+            Sapan Patel
+          </a>
+        </div>
+        <div className="flex items-center space-x-2 text-[10.5px]">
+          <a
+            href="https://www.linkedin.com/in/sapan-patel-807321222/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-cyan-400 hover:underline flex items-center space-x-0.5 font-semibold"
+            title="Sapan Patel LinkedIn"
+          >
+            <Linkedin className="w-3 h-3" />
+            <span>LinkedIn</span>
+          </a>
+          <span className="text-slate-300 dark:text-slate-700">•</span>
+          <a
+            href="https://sapanpatel1230.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-cyan-400 hover:underline flex items-center space-x-0.5 font-semibold"
+            title="Sapan Patel Portfolio"
+          >
+            <Globe className="w-3 h-3" />
+            <span>Portfolio</span>
+          </a>
+        </div>
+      </div>
+
       {/* Mobile Drawer / Slide-Over Menu (< sm) */}
       {isMobileMenuOpen && (
-        <div className="sm:hidden fixed inset-x-0 top-[57px] bottom-0 z-50 bg-slate-950/70 backdrop-blur-md overflow-y-auto animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 shadow-2xl space-y-4 max-h-[calc(100vh-65px)] overflow-y-auto">
+        <div className="sm:hidden fixed inset-x-0 top-[85px] bottom-0 z-50 bg-slate-950/70 backdrop-blur-md overflow-y-auto animate-in fade-in duration-150">
+          <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 shadow-2xl space-y-4 max-h-[calc(100vh-90px)] overflow-y-auto">
             {/* Active Scenario Card & Switch Action */}
             {activeScenarioName && (
               <div className="bg-blue-50/80 dark:bg-blue-950/50 p-3 rounded-xl border border-blue-200 dark:border-blue-900/60 space-y-2">

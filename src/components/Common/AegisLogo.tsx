@@ -53,8 +53,13 @@ export const AegisLogo: React.FC<AegisLogoProps> = ({ size = 'md', showSubtitle 
           </span>
         </div>
         {showSubtitle && (
-          <span className="hidden sm:inline-block text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5 truncate">
-            Microsoft Purview • Content Safety • Zero Trust RBAC
+          <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5 truncate">
+            <span className="sm:hidden text-slate-600 dark:text-slate-300 font-semibold">
+              By <span className="font-bold text-blue-600 dark:text-cyan-400">Sapan Patel</span>
+            </span>
+            <span className="hidden sm:inline">
+              Microsoft Purview • Content Safety • Zero Trust RBAC
+            </span>
           </span>
         )}
       </div>
