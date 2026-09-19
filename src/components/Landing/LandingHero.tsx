@@ -79,6 +79,8 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
         ipSourceCode: scen.containsSecrets,
       }
     });
+    // Automatically route to further steps (workspace dashboard & blueprint)
+    onSubmit();
   };
 
   const handleSaveCustomScenario = (customScen: BusinessScenario) => {
@@ -200,11 +202,11 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
                   1
                 </span>
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-                  Select a Pre-Configured Use Case or Add Your Own
+                  Select a Use Case to Automatically Generate Assessment &amp; Blueprint
                 </h2>
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 ml-8">
-                Choose one of 5 enterprise scenarios or click "Add Custom Use Case" to specify your exact architecture.
+                Click any scenario below to automatically launch its Risk Heatmap, 7-Stage Topology, Threat Simulator, and Governance Blueprint.
               </p>
             </div>
 
@@ -290,6 +292,12 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
                       {scen.containsFinancial && <span className="font-semibold text-emerald-600 dark:text-emerald-400">• Financial</span>}
                       {scen.containsPhi && <span className="font-semibold text-rose-600 dark:text-rose-400">• HIPAA PHI</span>}
                       {scen.containsSecrets && <span className="font-semibold text-purple-600 dark:text-purple-400">• Secrets/IP</span>}
+                    </div>
+
+                    {/* Launch Action Indicator */}
+                    <div className="pt-2 flex items-center justify-between text-[11px] font-bold text-blue-600 dark:text-cyan-400 group-hover:text-blue-500 dark:group-hover:text-cyan-300">
+                      <span>Launch Assessment &amp; Blueprint</span>
+                      <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </div>
