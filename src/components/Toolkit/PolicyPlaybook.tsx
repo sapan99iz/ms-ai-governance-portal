@@ -35,6 +35,7 @@ export const PolicyPlaybook: React.FC<PolicyPlaybookProps> = ({
     if (isMailAutomation) return 'power-automate-flow-dlp-mail';
     return POLICY_SNIPPETS[0].id;
   });
+  const [mobileTab, setMobileTab] = useState<'list' | 'code'>('list');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -166,10 +167,36 @@ export const PolicyPlaybook: React.FC<PolicyPlaybookProps> = ({
         </div>
       </div>
 
+      {/* Mobile Mode Switcher (< lg) */}
+      <div className="flex lg:hidden items-center space-x-1.5 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-xs">
+        <button
+          type="button"
+          onClick={() => setMobileTab('list')}
+          className={`flex-1 py-1.5 px-2 rounded-lg font-bold text-center transition-all ${
+            mobileTab === 'list'
+              ? 'bg-white dark:bg-slate-800 text-purple-600 dark:text-purple-400 shadow-sm'
+              : 'text-slate-500 dark:text-slate-400'
+          }`}
+        >
+          📋 Script Catalog ({filteredSnippets.length})
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileTab('code')}
+          className={`flex-1 py-1.5 px-2 rounded-lg font-bold text-center transition-all ${
+            mobileTab === 'code'
+              ? 'bg-purple-600 text-white shadow-sm'
+              : 'text-slate-500 dark:text-slate-400'
+          }`}
+        >
+          💻 Code &amp; Config ({selectedSnippet.language.toUpperCase()})
+        </button>
+      </div>
+
       {/* Main 2-Column Inspector */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column (5 cols): Scripts List */}
-        <div className="lg:col-span-5 space-y-3 max-h-[620px] overflow-y-auto pr-1">
+        <div className={`${mobileTab === 'code' ? 'hidden lg:block' : 'block'} lg:col-span-5 space-y-3 max-h-[620px] overflow-y-auto pr-1`}>
           {filteredSnippets.length === 0 ? (
             <div className="p-8 text-center text-xs text-slate-400 bg-white dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-800">
               No policy scripts match your filter.
@@ -182,7 +209,10 @@ export const PolicyPlaybook: React.FC<PolicyPlaybookProps> = ({
               return (
                 <div
                   key={snippet.id}
-                  onClick={() => setSelectedSnippetId(snippet.id)}
+                  onClick={() => {
+                    setSelectedSnippetId(snippet.id);
+                    setMobileTab('code');
+                  }}
                   className={`p-4 rounded-xl border-2 transition-all cursor-pointer text-left ${
                     isSelected
                       ? 'bg-purple-50/90 dark:bg-purple-950/40 border-purple-600 dark:border-purple-400 shadow-md ring-2 ring-purple-500/20'
@@ -218,13 +248,22 @@ export const PolicyPlaybook: React.FC<PolicyPlaybookProps> = ({
         </div>
 
         {/* Right Column (7 cols): Selected Script Code Viewer */}
-        <div className="lg:col-span-7 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden flex flex-col justify-between">
+        <div className={`${mobileTab === 'list' ? 'hidden lg:flex' : 'flex'} lg:col-span-7 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden flex-col justify-between`}>
           <div>
-            <div className="bg-slate-100 dark:bg-slate-950/80 px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-slate-100 dark:bg-slate-950/80 px-4 sm:px-5 py-3 sm:py-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
-                  {selectedSnippet.category} • {selectedSnippet.language.toUpperCase()}
-                </span>
+                <div className="flex items-center space-x-2">
+                  <button
+                    type="button"
+                    onClick={() => setMobileTab('list')}
+                    className="lg:hidden text-xs text-purple-600 dark:text-purple-400 font-bold hover:underline"
+                  >
+                    ← Back to List
+                  </button>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+                    {selectedSnippet.category} • {selectedSnippet.language.toUpperCase()}
+                  </span>
+                </div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
                   {selectedSnippet.title}
                 </h4>

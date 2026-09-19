@@ -423,8 +423,35 @@ UnifiedAuditLog
         </div>
       </div>
 
+      {/* Mobile Stage Selector (< sm) */}
+      <div className="sm:hidden space-y-2 bg-white dark:bg-slate-900/90 rounded-2xl p-3 border border-slate-200 dark:border-slate-800 shadow-md">
+        <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center justify-between">
+          <span>Tap Security Gate to Inspect:</span>
+          <span className="text-blue-600 dark:text-cyan-400 font-bold">Gate 0{selectedNode.number} of 7</span>
+        </div>
+        <div className="grid grid-cols-4 gap-1.5">
+          {stages.map((stage) => {
+            const isSelected = selectedNodeId === stage.id;
+            return (
+              <button
+                key={stage.id}
+                type="button"
+                onClick={() => setSelectedNodeId(stage.id)}
+                className={`py-2 px-1 rounded-lg text-[11px] font-bold text-center border transition-all truncate ${
+                  isSelected
+                    ? 'bg-blue-600 text-white border-blue-500 shadow-sm ring-1 ring-blue-400'
+                    : 'bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-blue-400'
+                }`}
+              >
+                <span>0{stage.number}. {stage.shortTitle.split(' ')[1] || stage.shortTitle}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Interactive 7-Stage Pipeline Visual Track */}
-      <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-xl overflow-x-auto">
+      <div className="bg-white dark:bg-slate-900/90 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xl overflow-x-auto touch-pan-x overscroll-contain">
         <div className="min-w-[780px] flex items-center justify-between relative py-2">
           {/* Background Connecting Wire */}
           <div className="absolute top-1/2 left-6 right-6 h-0.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 -translate-y-1/2 z-0 opacity-40" />

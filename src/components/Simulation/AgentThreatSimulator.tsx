@@ -106,6 +106,7 @@ export const AgentThreatSimulator: React.FC<AgentThreatSimulatorProps> = ({
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
   const [simulationProgress, setSimulationProgress] = useState<number>(0);
   const [hasSimulated, setHasSimulated] = useState<boolean>(true); // Default true so user immediately sees side-by-side
+  const [mobileResultView, setMobileResultView] = useState<'both' | 'vulnerable' | 'hardened'>('both');
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   // Custom Prompt Playground state
@@ -452,9 +453,40 @@ export const AgentThreatSimulator: React.FC<AgentThreatSimulatorProps> = ({
             </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Mobile View Filter Tabs (< lg) */}
+          <div className="flex lg:hidden items-center space-x-1 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-xs">
+            <button
+              type="button"
+              onClick={() => setMobileResultView('both')}
+              className={`flex-1 py-1.5 px-2 rounded-lg font-bold text-center transition-all ${
+                mobileResultView === 'both' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-cyan-400 shadow-sm' : 'text-slate-500 dark:text-slate-400'
+              }`}
+            >
+              Stacked View
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileResultView('vulnerable')}
+              className={`flex-1 py-1.5 px-2 rounded-lg font-bold text-center transition-all ${
+                mobileResultView === 'vulnerable' ? 'bg-rose-600 text-white shadow-sm' : 'text-slate-500 dark:text-slate-400'
+              }`}
+            >
+              🔴 Exploit Bypass
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileResultView('hardened')}
+              className={`flex-1 py-1.5 px-2 rounded-lg font-bold text-center transition-all ${
+                mobileResultView === 'hardened' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-500 dark:text-slate-400'
+              }`}
+            >
+              🛡️ Aegis Defense
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* LEFT PANE: Vulnerable State (Default / Zero Guardrails) */}
-            <div className="bg-rose-50/40 dark:bg-rose-950/20 border-2 border-rose-300 dark:border-rose-900/80 rounded-2xl p-5 sm:p-6 space-y-4 shadow-lg">
+            <div className={`${mobileResultView === 'hardened' ? 'hidden lg:block' : 'block'} bg-rose-50/40 dark:bg-rose-950/20 border-2 border-rose-300 dark:border-rose-900/80 rounded-2xl p-4 sm:p-6 space-y-4 shadow-lg`}>
               <div className="flex items-center justify-between border-b border-rose-200 dark:border-rose-900/60 pb-3">
                 <div className="flex items-center space-x-2">
                   <ShieldOff className="w-5 h-5 text-rose-600 dark:text-rose-400" />
@@ -514,7 +546,7 @@ export const AgentThreatSimulator: React.FC<AgentThreatSimulatorProps> = ({
             </div>
 
             {/* RIGHT PANE: Hardened State (Aegis Microsoft Guardrails Applied) */}
-            <div className="bg-emerald-50/40 dark:bg-emerald-950/20 border-2 border-emerald-300 dark:border-emerald-900/80 rounded-2xl p-5 sm:p-6 space-y-4 shadow-lg">
+            <div className={`${mobileResultView === 'vulnerable' ? 'hidden lg:block' : 'block'} bg-emerald-50/40 dark:bg-emerald-950/20 border-2 border-emerald-300 dark:border-emerald-900/80 rounded-2xl p-4 sm:p-6 space-y-4 shadow-lg`}>
               <div className="flex items-center justify-between border-b border-emerald-200 dark:border-emerald-900/60 pb-3">
                 <div className="flex items-center space-x-2">
                   <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />

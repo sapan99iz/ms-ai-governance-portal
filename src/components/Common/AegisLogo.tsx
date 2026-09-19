@@ -43,17 +43,17 @@ export const AegisLogo: React.FC<AegisLogoProps> = ({ size = 'md', showSubtitle 
       </div>
 
       {/* Brand Typography */}
-      <div className="flex flex-col">
-        <div className="flex items-center space-x-2">
-          <span className={`font-black ${titleSize} tracking-tight text-slate-900 dark:text-white leading-none`}>
+      <div className="flex flex-col min-w-0">
+        <div className="flex items-center space-x-1.5 sm:space-x-2">
+          <span className={`font-black ${titleSize} tracking-tight text-slate-900 dark:text-white leading-none whitespace-nowrap`}>
             Aegis<span className="text-blue-600 dark:text-cyan-400">AI</span>
           </span>
-          <span className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-cyan-300 border border-blue-200 dark:border-blue-700/50 uppercase tracking-widest">
+          <span className="hidden min-[420px]:inline-block text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-cyan-300 border border-blue-200 dark:border-blue-700/50 uppercase tracking-widest whitespace-nowrap">
             MS AI Security
           </span>
         </div>
         {showSubtitle && (
-          <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+          <span className="hidden sm:inline-block text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5 truncate">
             Microsoft Purview • Content Safety • Zero Trust RBAC
           </span>
         )}

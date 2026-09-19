@@ -66,17 +66,23 @@ export const RiskHeatmap: React.FC<RiskHeatmapProps> = ({
         </div>
       </div>
 
+      {/* Mobile Swipe Hint */}
+      <div className="sm:hidden text-[11px] font-mono text-center text-blue-600 dark:text-cyan-400 bg-blue-50/80 dark:bg-blue-950/50 py-1.5 px-3 rounded-lg border border-blue-200 dark:border-blue-900/60 flex items-center justify-center space-x-1.5 select-none">
+        <span>↔</span>
+        <span>Swipe horizontally to inspect all 5 Likelihood columns</span>
+      </div>
+
       {/* Heatmap Grid Container - Compact and optimized space */}
       <div className="relative flex pt-1">
         {/* Y-Axis Label */}
-        <div className="flex items-center justify-center mr-2 select-none">
+        <div className="flex items-center justify-center mr-1 sm:mr-2 select-none">
           <span className="-rotate-90 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 whitespace-nowrap">
             Impact Severity →
           </span>
         </div>
 
-        <div className="flex-1 overflow-x-auto pb-1">
-          <div className="min-w-[460px]">
+        <div className="flex-1 overflow-x-auto pb-1 touch-pan-x overscroll-contain">
+          <div className="min-w-[440px]">
             {rows.map((impact) => (
               <div key={impact} className="flex items-stretch space-x-1.5 mb-1.5">
                 {/* Impact Row Label */}

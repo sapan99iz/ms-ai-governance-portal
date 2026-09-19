@@ -141,8 +141,11 @@ export const RadarPostureChart: React.FC<RadarProps> = ({
       </div>
 
       {/* Main SVG Radar Spider Chart */}
-      <div className="relative py-1">
-        <svg width={width} height={height} className="overflow-visible">
+      <div className="relative py-1 w-full flex justify-center overflow-hidden">
+        <svg 
+          viewBox={`-35 -25 ${width + 70} ${height + 50}`} 
+          className="w-full max-w-[360px] h-auto overflow-visible select-none"
+        >
           {/* Concentric Grid Polygons with Light & Dark theme support */}
           {levels.map((level, i) => {
             const gridRatios = new Array(totalPoints).fill(level);

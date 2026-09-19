@@ -322,20 +322,20 @@ export function App() {
             </span>
           </div>
 
-          <div className="flex items-center space-x-2 shrink-0">
+          <div className="flex items-center space-x-2 w-full sm:w-auto shrink-0 mt-1 sm:mt-0">
             <button
               type="button"
               onClick={() => setPortalStage('landing')}
-              className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-cyan-300 text-xs font-semibold shadow-sm transition-all cursor-pointer"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center space-x-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-cyan-300 text-xs font-semibold shadow-sm transition-all cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5 text-blue-500" />
-              <span>Switch / Edit Use Case</span>
+              <span>Switch Use Case</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsReportOpen(true)}
-              className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow transition-all active:scale-95 cursor-pointer"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center space-x-1 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow transition-all active:scale-95 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span>CISO Brief</span>
@@ -881,9 +881,9 @@ export function App() {
             </div>
             <span className="hidden sm:inline text-slate-300 dark:text-slate-700">•</span>
             {/* By Sapan Patel - AI Agent Developer & Solution Architect */}
-            <div className="flex items-center space-x-2 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-2 gap-y-1 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
               <span>By <strong className="text-slate-900 dark:text-white font-bold">Sapan Patel</strong> — AI Agent Developer &amp; Solution Architect</span>
-              <span className="text-slate-300 dark:text-slate-700">•</span>
+              <span className="hidden sm:inline text-slate-300 dark:text-slate-700">•</span>
               <span className="text-slate-600 dark:text-slate-400 font-medium">Microsoft AI Ecosystem</span>
               <span className="text-slate-300 dark:text-slate-700">•</span>
               <a
