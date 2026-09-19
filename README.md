@@ -11,7 +11,7 @@
 
 ## 🌟 Live Demo & Architecture Highlights
 
-- **Live URL**: [https://sapanpatel1230.github.io/ms-ai-governance-portal/](https://sapanpatel1230.github.io/ms-ai-governance-portal/)
+- **Live URL**: [https://sapan99iz.github.io/ms-ai-governance-portal/](https://sapan99iz.github.io/ms-ai-governance-portal/)
 - **Author**: **Sapan Patel** — AI Agent Developer & Solution Architect
 - **LinkedIn**: [linkedin.com/in/sapan-patel-807321222/](https://www.linkedin.com/in/sapan-patel-807321222/)
 - **Portfolio**: [sapanpatel1230.github.io](https://sapanpatel1230.github.io/)
@@ -75,7 +75,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/sapanpatel1230/ms-ai-governance-portal.git
+git clone https://github.com/sapan99iz/ms-ai-governance-portal.git
 cd ms-ai-governance-portal
 
 # Install dependencies
